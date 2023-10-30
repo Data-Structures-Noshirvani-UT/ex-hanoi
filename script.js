@@ -39,25 +39,45 @@ function diskCreator(number, className){
 }
 
 
-function hanoi(from, via, to, n){
-    //TO DO
-    // Use moves.push([from, to]) to apply MOVE(from ------> to)
+function hanoi(A, B, C, n){
+    if(n==1){
+    moves.push([A,C]);
+    }
+    else{
+    hanoi(A,C,B,n-1);
+    moves.push([A,C]);
+    hanoi(B,A,C,n-1);
+    }
 }
 function exHanoi_1(A, B, C, n){
-    alert("YOU HAVE TO COMPLETE exHanoi_1 Function")
-    //TO DO
-    // Use moves.push([from, to]) to apply MOVE(from ------> to)
+   if(n==1){
+   hanoi(B,C,A,2*n);
+   hanoi(A,B,C,5*n);
+   }
+   else{
+   exhanoi_3(A,B,C,n-1);
+   hanoi(C,A,B,5*(n-1));
+   hanoi(B,C,A,5*(n-1)+2);
+   hanoi(A,B,C,5*n);
+   }
+
 
 }
 function exHanoi_2(A, B, C, D, n){
-    alert("YOU HAVE TO COMPLETE exHanoi_2 Function")
-    //TO DO
-    // Use moves.push([from, to]) to apply MOVE(from ------> to)
-
+   hanoi(A,B,D,n);
+   hanoi(C,B,A,n);
 }
 function exhanoi_3(A, B, C, n){
-    alert("YOU HAVE TO COMPLETE exHanoi_3 Function")
-    //TO DO
+    if(n==1){
+    moves.push([A,C]);
+    moves.push([B,C]);
+    }
+    else{
+    exhanoi_3(A,B,C,n-1);
+    moves.push([B,A]);
+    hanoi(C,B,A,2*(n-1));
+    hanoi(A,B,C,2*n);
+    }
 }
 function moveDisks(from, to){
     const fromEl = rods[from];
